@@ -33,7 +33,7 @@
           <th>Delete</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="datas">
         <tr *ngFor="let data of datas ">
           <td>{{ data.name }}</td>
           <td><img src="{{ api.baseurl +  data.picpath }}" width="100px"> </td>

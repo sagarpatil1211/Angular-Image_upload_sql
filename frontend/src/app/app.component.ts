@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
     this.api.get("image/").subscribe((result:any)=>{
       // console.log(result);
-      if(result.statu)
+      if(result.status == "success")
       this.datas = result.data
       
     })
@@ -113,4 +113,8 @@ export class AppComponent implements OnInit {
           alert("Something went wrong")
         } 
       })
- 
+      
+    }
+    
+  }
+}
