@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <h1>Image Upload</h1>
+  <div class="col-lg-8">
+    <form [formGroup]="form" (ngSubmit)="save(form.value)">
+      <div class="row">
+        <div class="col-6">
+          <span>Enter Name </span> <span class="text-danger">*</span>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="col-6">
+          <span>below input type= "hidden" after testing </span>
+          <input type="text" formControlName="image" class="form-control mb-2">
+
+          <span>Image Path </span><span class="text-danger" *ngIf="id==0">*</span>
+          <input type="file" class="form-control" accept="image/*" (change)="imageChanged($event)">
+        </div>
+      </div>
+
+  
+
+      <input type="submit" [disabled]="form.invalid" class="btn btn-primary">
+      <button type="button" class="btn btn-danger ms-2" (click)="reset()">Cancel</button>
+
+    </form>
+
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of datas ">
+          <td>{{ data.name }}</td>
+          <td><img src="{{ api.baseurl +  data.picpath }}" width="100px"> </td>
+          <td><button class="btn btn-outline-primary" (click)="edit(data.id)">Edit</button> </td>
+          <td><button class="btn btn-outline-danger" (click)="delete(data.id)">Delete</button> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
